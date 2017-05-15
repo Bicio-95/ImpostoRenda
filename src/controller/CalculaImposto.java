@@ -47,6 +47,46 @@ public class CalculaImposto {
 				return calculaValor(valorExcedente, 0.275);
 			}
 	}
+	
+	public double calculaImpostoAPagarCompleto(PessoaFisica p) {
+		double totalCalculado = p.getTotalDeRendimentos();		
+		double impostoAPagar = 0;
+		double valorExcedente;
+		
+			if(p.getIdade() <= 65){
+				//2% desconto
+				if(p.getNumeroDependetes() <= 2){
+					if(totalCalculado > 12000 && totalCalculado < 24000){
+						valorExcedente = totalCalculado -12000;
+						return calculaValor(valorExcedente, 0.2);
+					}
+					if(totalCalculado > 12000 && totalCalculado < 24000){
+						valorExcedente = totalCalculado -12000;
+						return calculaValor(valorExcedente, 0.15);
+					}
+					if(totalCalculado > 12000 && totalCalculado < 24000){
+						valorExcedente = totalCalculado -12000;
+						return calculaValor(valorExcedente, 0.02);
+					}
+				if(p.getNumeroDependetes() > 3 && p.getNumeroDependetes()<=5){
+					
+				}
+					
+				}
+			}
+		
+		
+		if(totalCalculado <= 12000){
+			return impostoAPagar;
+		} else if (totalCalculado > 12000 && totalCalculado < 24000){
+			valorExcedente = totalCalculado - 12000;
+			return calculaValor(valorExcedente, 0.15);
+		} else { //verificar!
+			valorExcedente = totalCalculado - 24000;
+			return calculaValor(valorExcedente, 0.275);
+		}
+	}
+	
 
 	private double calculaValor(double valor, double porcentagem){
 		return valor * porcentagem;
